@@ -44,15 +44,17 @@ export function Header() {
                 fontWeight="500"
                 color={"secondary.main"}
               >
-                <Link href="/">Services</Link>
+                <Link href="/">About us</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
-                <Link href="/">Pricing</Link>
+                <Link href="/">Mission</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
-                <Link href="/">About Us</Link>
+                <Link href="/">Events</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
-                <Link href="/">Blog</Link>
+                <Link href="/">News</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
-                <Link href="/">Contact Us</Link>
+                <Link href="/">Gallery</Link>
+                <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
+                <Link href="/">Publications</Link>
               </Flex>
             </Show>
           </Flex>
@@ -113,11 +115,12 @@ function HeaderMenu() {
       boxShadow={"2xl"}
       color={"secondary.main"}
     >
-      <Link href="/">Services</Link>
-      <Link href="/">Pricing</Link>
-      <Link href="/">About Us</Link>
-      <Link href="/">Blog</Link>
-      <Link href="/">Contact Us</Link>
+      <Link href="/">About us</Link>
+      <Link href="/">Mission</Link>
+      <Link href="/">Events</Link>
+      <Link href="/">News</Link>
+      <Link href="/">Gallery</Link>
+      <Link href="/">Publications</Link>
       <Link href="#contact">
         <Text fontWeight={600}>Contact Sales</Text>
       </Link>{" "}
