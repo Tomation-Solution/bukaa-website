@@ -48,13 +48,13 @@ export function Header() {
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
                 <Link href="/">Mission</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
-                <Link href="/">Events</Link>
+                <Link href="/events">Events</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
-                <Link href="/">News</Link>
+                <Link href="/news">News</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
                 <Link href="/">Gallery</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
-                <Link href="/">Publications</Link>
+                <Link href="/publication">Publications</Link>
               </Flex>
             </Show>
           </Flex>
@@ -117,10 +117,10 @@ function HeaderMenu() {
     >
       <Link href="/">About us</Link>
       <Link href="/">Mission</Link>
-      <Link href="/">Events</Link>
-      <Link href="/">News</Link>
+      <Link href="/events">Events</Link>
+      <Link href="/news">News</Link>
       <Link href="/">Gallery</Link>
-      <Link href="/">Publications</Link>
+      <Link href="/publication">Publications</Link>
       <Link href="#contact">
         <Text fontWeight={600}>Contact Sales</Text>
       </Link>{" "}

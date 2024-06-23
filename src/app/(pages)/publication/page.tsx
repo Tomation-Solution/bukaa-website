@@ -1,6 +1,6 @@
-import { Text, Flex, Box } from "@chakra-ui/react";
+import { Text, Flex, Box, Image } from "@chakra-ui/react";
 
-const Vision = () => {
+const Publication = () => {
   return (
     <>
       <Flex
@@ -8,7 +8,7 @@ const Vision = () => {
         align={"center"}
         flexDirection={"column"}
         gap={16}
-        my={32}
+        my={48}
       >
         <Box position={"relative"}>
           <Text
@@ -18,7 +18,7 @@ const Vision = () => {
             zIndex={40}
             position={"relative"}
           >
-            OUR VISION
+            PUBLICATION
           </Text>
           <Flex
             justify={"center"}
@@ -39,31 +39,14 @@ const Vision = () => {
               fontSize={"60px"}
               fontWeight={300}
             >
-              Our Vision
+              Publication{" "}
             </Text>
           </Flex>
         </Box>
 
-        <Flex
-          justifyContent={"center"}
-          textAlign={"center"}
-          align={"center"}
-          w={{ base: "80%", lg: "50%" }}
-        >
-          <Text color={"primary.main"}>
-            The University shall be the leading institution in the development
-            and promotion of a comprehensive and integrated system of functional
-            education that is in line with the values and aspirations of its
-            host community and the nation. <br />
-            <br />
-            Our VISION to serve as an agent of development and a catalyst in
-            promoting stakeholders&apos; and public participation in
-            funding education.
-          </Text>
-        </Flex>
       </Flex>
     </>
   );
 };
 
-export default Vision;
+export default Publication;

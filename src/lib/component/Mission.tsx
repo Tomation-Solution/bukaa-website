@@ -51,14 +51,24 @@ const Mission = () => {
           w={{ base: "80%", lg: "50%" }}
         >
           <Text color={"primary.main"}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint eos
-            magnam nostrum rerum atque a porro explicabo nisi fugiat. Est cumque
-            illo ad sapiente repellendus quas, reiciendis aut eos numquam?
+            To provide excellent undergraduate and professional educational
+            programmes and to produce high quality human resources required for
+            the promotion of the development of the host community, the nation
+            and humanity. <br />
+            <br />
+            Our MISSION Is to provide support requirement for the promotion of
+            functional education in line with the value and aspirations of
+            Bayero University.
           </Text>
         </Flex>
       </Flex>
 
-      <Flex justifyContent={"center"} flexDirection={{base:'column', lg:'row'}} align={{base:'center', lg:"start"}} gap={8}>
+      <Flex
+        justifyContent={"center"}
+        flexDirection={{ base: "column", lg: "row" }}
+        align={{ base: "center", lg: "start" }}
+        gap={8}
+      >
         <Box
           rounded={16}
           py={6}

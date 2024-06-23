@@ -1,5 +1,6 @@
 "use client"
 
+import About from "@/lib/component/About";
 import Achievement from "@/lib/component/Achievement";
 import Hero from "@/lib/component/Hero";
 import Members from "@/lib/component/Members";
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <>
     <Hero />
+    <About />
     <Vision />
     <Mission />
     <Achievement />
