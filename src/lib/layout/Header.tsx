@@ -44,9 +44,9 @@ export function Header() {
                 fontWeight="500"
                 color={"secondary.main"}
               >
-                <Link href="/">About us</Link>
+                <Link href="#about">About us</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
-                <Link href="/">Mission</Link>
+                <Link href="#mission">Mission</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
                 <Link href="/events">Events</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
@@ -115,8 +115,8 @@ function HeaderMenu() {
       boxShadow={"2xl"}
       color={"secondary.main"}
     >
-      <Link href="/">About us</Link>
-      <Link href="/">Mission</Link>
+      <Link href="#about">About us</Link>
+      <Link href="#mission">Mission</Link>
       <Link href="/events">Events</Link>
       <Link href="/news">News</Link>
       <Link href="/">Gallery</Link>

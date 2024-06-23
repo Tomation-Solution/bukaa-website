@@ -2,7 +2,7 @@ import { Text, Flex, Box } from "@chakra-ui/react";
 
 const About = () => {
   return (
-    <>
+    <Box id="about">
       <Flex
         justify={"center"}
         align={"center"}
@@ -63,7 +63,7 @@ const About = () => {
           </Text>
         </Flex>
       </Flex>
-    </>
+    </Box>
   );
 };
 

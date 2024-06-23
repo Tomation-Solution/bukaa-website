@@ -2,7 +2,7 @@ import { Text, Flex, Box } from "@chakra-ui/react";
 
 const Mission = () => {
   return (
-    <Box my={32}>
+    <Box my={32} id="mission">
       <Flex
         justify={"center"}
         align={"center"}

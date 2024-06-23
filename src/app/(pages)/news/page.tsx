@@ -66,7 +66,7 @@ const News = () => {
           align={"center"}
           w={{ base: "80%", lg: "100%" }}
           flexWrap={"wrap"}
-          gap={"30px"}
+          gap={"50px"}
         >
           <Flex
             flexDirection="column"
