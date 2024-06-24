@@ -61,26 +61,62 @@ const Mission = () => {
             Bayero University.
           </Text>
         </Flex>
+
+        <Flex
+          justifyContent={"center"}
+          textAlign={"center"}
+          align={"center"}
+          w={{ base: "80%", lg: "50%" }}
+          flexDirection={"column"}
+        >
+          <Text color={"primary.main"} fontWeight={500} textAlign={"center"}>
+            THE ALUMNI ASSOCIATION
+          </Text>
+          <Text color={"primary.main"}>
+            Who is an Alumnus of Bayero University Kano?
+            <br />
+            <br />
+            An Alumnus of Bayero University, Kano is: A graduate or former
+            student of Bayero University or Abdullahi Bayero College or of
+            Bayero University College Recipients of Bayero University&apos;s
+            honorary degree. Serving and former employees of Bayero University
+            Kano as associate members.
+          </Text>
+        </Flex>
       </Flex>
 
+      <Flex
+        justifyContent={"center"}
+        textAlign={"center"}
+        align={"center"}
+        // w={{ base: "80%", lg: "50%" }}
+        pb={10}
+      >
+        <Text color={"primary.main"} fontWeight={500} textAlign={"center"}>
+          OBJECTIVES OF BAYERO UNIVERSITY ALUMNI ASSOCIATION
+        </Text>
+      </Flex>
       <Flex
         justifyContent={"center"}
         flexDirection={{ base: "column", lg: "row" }}
         align={{ base: "center", lg: "start" }}
         gap={8}
+        px={"8%"}
+        flexWrap={"wrap"}
       >
         <Box
           rounded={16}
           py={6}
           px={3}
           border={"secondary.sub__"}
-          _hover={{ bg: "secondary.sub__", color: "white" }}
+          _hover={{ bg: "secondary.main", color: "white" }}
           borderWidth={"2px"}
-          w={"250px"}
+          w={"320px"}
+          h={"150px"}
         >
           <Text textAlign={"center"} fontWeight={500}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non
-            laborum deserunt rem atque fuga officiis{" "}
+            To provide a forum for its members for exchange of ideas regarding
+            problems and progress of Bayero University.
           </Text>
         </Box>
         <Box
@@ -88,13 +124,14 @@ const Mission = () => {
           py={6}
           px={3}
           border={"secondary.sub__"}
-          _hover={{ bg: "secondary.sub__", color: "white" }}
+          _hover={{ bg: "secondary.main", color: "white" }}
           borderWidth={"2px"}
-          w={"250px"}
+          w={"320px"}
+          h={"150px"}
         >
           <Text textAlign={"center"} fontWeight={500}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non
-            laborum deserunt rem atque fuga officiis{" "}
+            To provide a forum for its members for exchange of ideas regarding
+            problems and progress of Bayero University.
           </Text>
         </Box>
         <Box
@@ -102,13 +139,59 @@ const Mission = () => {
           py={6}
           px={3}
           border={"secondary.sub__"}
-          _hover={{ bg: "secondary.sub__", color: "white" }}
+          _hover={{ bg: "secondary.main", color: "white" }}
           borderWidth={"2px"}
-          w={"250px"}
+          w={"320px"}
+          h={"150px"}
         >
           <Text textAlign={"center"} fontWeight={500}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non
-            laborum deserunt rem atque fuga officiis{" "}
+            To serve individual Alumni and assist in the operations of the
+            Alumni Association of the University.
+          </Text>
+        </Box>
+        <Box
+          rounded={16}
+          py={6}
+          px={3}
+          border={"secondary.sub__"}
+          _hover={{ bg: "secondary.main", color: "white" }}
+          borderWidth={"2px"}
+          w={"320px"}
+          h={"150px"}
+        >
+          <Text textAlign={"center"} fontWeight={500}>
+            To achieve the above objectives by organizing educational, cultural
+            and social programmes
+          </Text>
+        </Box>
+        <Box
+          rounded={16}
+          py={6}
+          px={3}
+          border={"secondary.sub__"}
+          _hover={{ bg: "secondary.main", color: "white" }}
+          borderWidth={"2px"}
+          w={"320px"}
+          h={"150px"}
+        >
+          <Text textAlign={"center"} fontWeight={500}>
+            To maintain and improve the prestige, academic excellence and good
+            image of the University.
+          </Text>
+        </Box>
+        <Box
+          rounded={16}
+          py={6}
+          px={3}
+          border={"secondary.sub__"}
+          _hover={{ bg: "secondary.main", color: "white" }}
+          borderWidth={"2px"}
+          w={"320px"}
+          h={"150px"}
+        >
+          <Text textAlign={"center"} fontWeight={500}>
+            To enhance and encourage mutual understanding between the
+            authorities, staff and students of Bayero University.
           </Text>
         </Box>
       </Flex>
