@@ -140,10 +140,10 @@ const Members = () => {
                   alt="executive"
                 />
                 <Text fontWeight={600} color={"primary.sub"} align={"center"}>
-                  LAWAN ALI GUJUNGU
+                  Lawan Ali Gujungu
                 </Text>
                 <Text fontWeight={400} color={"primary.main"} align={"center"}>
-                  TREASURER
+                  Treasurer
                 </Text>
               </Flex>{" "}
               <Flex flexDirection={"column"} gap={2} align={"center"}>
@@ -205,7 +205,7 @@ const Members = () => {
                   Amb Adamu Babangida Ibrahim
                 </Text>
                 <Text fontWeight={400} color={"primary.main"} align={"center"}>
-                  fcit Internal Auditor
+                  Internal Auditor
                 </Text>
               </Flex>{" "}
               <Flex flexDirection={"column"} gap={2} align={"center"}>
