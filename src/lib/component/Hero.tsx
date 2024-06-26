@@ -22,17 +22,26 @@ const Hero = () => {
               fontSize={44}
               display={{ base: "none", lg: "block" }}
             >
-              Cool, <br /> Accurate & <br />
-              Interesting
+              BUKAA, Our <br /> Rallying Point for <br />
+              Success...
             </Text>
-            <Text fontWeight={700} fontSize={44} textAlign={'center'} display={{ lg: "none" }}>
-              Cool, Accurate & Interesting
+            <Text
+              fontWeight={700}
+              fontSize={44}
+              textAlign={"center"}
+              display={{ lg: "none" }}
+            >
+              BUKAA, Our Rallying Point for Success...
             </Text>
-            <Text w={{base:'100%', lg:"60%"}} textAlign={{base:'center', lg:'left'}}>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi
-              itaque nemo optio exercitationem provident maiores et, nostrum
-              quas, molestiae quidem saepe expedita. Eum explicabo veritatis
-              perferendis placeat deserunt provident modi!
+            <Text
+              w={{ base: "100%", lg: "60%" }}
+              textAlign={{ base: "center", lg: "left" }}
+            >
+              Our alma mater, Bayero University Kano, has been the cornerstone
+              of our academic and personal development. Now, as alumni, it is
+              our collective responsibility to contribute to the legacy of
+              excellence that defines BUK. We stand on the shoulders of those
+              who came before us, and it is our turn to carry the torch forward.
             </Text>
           </Flex>
           <Box w={{ base: "100%", lg: "50%" }}>

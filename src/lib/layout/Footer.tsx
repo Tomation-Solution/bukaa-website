@@ -1,4 +1,4 @@
-import {Flex, Text} from "@chakra-ui/react";
+import { Flex, Text, Image } from "@chakra-ui/react";
 import { IoCall, IoMail } from "react-icons/io5";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { SiAppstore } from "react-icons/si";
@@ -16,19 +16,22 @@ export function Footer() {
         flexDirection={{ base: "column", lg: "row" }}
         gap={10}
       >
-        <Flex flexDirection={"column"} gap={3}>
+        <Flex flexDirection={"column"} gap={10}>
+          <Image src="/log.jpg" w={"100px"} h={"100px"} alt="" />
           <Text
-            fontSize={"1.6rem"}
-            fontWeight={"bold"}
-            color={"secondary.main"}
+            fontSize={"1rem"}
+            color={"primary.main"}
+            w={{ base: "100%", lg: "40%" }}
           >
-            LOGO
-          </Text>
-          <Text fontSize={"1rem"} color={"primary.main"} w={{base:"100%", lg:"40%"}}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
-            explicabo. Rerum voluptas ut recusandae est, asperiores fugit
-            temporibus voluptates obcaecati nisi nihil quasi doloremque maiores
-            aperiam tempora magnam dolorem omnis?
+            The Bayero University Alumni Office was incorporated in February
+            2001 and commenced operation in 2002. The Alumni Office, which later
+            metamorphosed into Development Office in March 2005, was initially
+            responsible for identifying the projects of Bayero University
+            whether in Nigeria or abroad and establishing Bayero University
+            Alumni Association Branches across the Country. The Office is also
+            in charge of the convocation register. <br /> <br />
+            The Development/Advancement Office has three main functions;
+            Development (fundraising), Alumni Relations and Communications.
           </Text>
         </Flex>
         <Flex flexDirection={"column"} align={"start"} gap={2}>

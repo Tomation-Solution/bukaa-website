@@ -30,13 +30,7 @@ export function Header() {
       >
         <Link href={"/"}>
           <Flex cursor={"pointer"} align={"center"} gap={"5rem"}>
-            <Text
-              fontSize={"1.6rem"}
-              fontWeight={"bold"}
-              color={"secondary.main"}
-            >
-              LOGO
-            </Text>
+           <Image src='/log.jpg' w={'55px'} h={'55px'} alt='' />
             <Show above="md">
               <Flex
                 gap={"1.5rem"}

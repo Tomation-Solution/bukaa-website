@@ -283,7 +283,6 @@ const Members = () => {
                   Ex Officio South West
                 </Text>
               </Flex>{" "}
-             
             </Flex>
           </Flex>
 
