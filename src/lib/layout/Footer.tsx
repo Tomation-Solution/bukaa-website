@@ -16,22 +16,10 @@ export function Footer() {
         flexDirection={{ base: "column", lg: "row" }}
         gap={10}
       >
-        <Flex flexDirection={"column"} gap={10}>
+        <Flex flexDirection={"row"} gap={5} justifyContent={'center'} alignItems={'center'}>
           <Image src="/log.jpg" w={"100px"} h={"100px"} alt="" />
-          <Text
-            fontSize={"1rem"}
-            color={"primary.main"}
-            w={{ base: "100%", lg: "40%" }}
-          >
-            The Bayero University Alumni Office was incorporated in February
-            2001 and commenced operation in 2002. The Alumni Office, which later
-            metamorphosed into Development Office in March 2005, was initially
-            responsible for identifying the projects of Bayero University
-            whether in Nigeria or abroad and establishing Bayero University
-            Alumni Association Branches across the Country. The Office is also
-            in charge of the convocation register. <br /> <br />
-            The Development/Advancement Office has three main functions;
-            Development (fundraising), Alumni Relations and Communications.
+          <Text fontWeight={600} fontSize={"24px"} color={"secondary.main"}>
+            BUUKA
           </Text>
         </Flex>
         <Flex flexDirection={"column"} align={"start"} gap={2}>

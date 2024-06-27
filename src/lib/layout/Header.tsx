@@ -30,7 +30,12 @@ export function Header() {
       >
         <Link href={"/"}>
           <Flex cursor={"pointer"} align={"center"} gap={"5rem"}>
-           <Image src='/log.jpg' w={'55px'} h={'55px'} alt='' />
+            <Flex cursor={"pointer"} align={"center"} gap={"1rem"}>
+              <Image src="/log.jpg" w={"40px"} h={"40px"} alt="" />
+              <Text fontWeight={600} fontSize={'20px'} color={"secondary.main"}>
+                BUUKA
+              </Text>
+            </Flex>
             <Show above="md">
               <Flex
                 gap={"1.5rem"}
