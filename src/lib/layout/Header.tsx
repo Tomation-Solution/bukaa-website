@@ -7,6 +7,15 @@ import { CloseSquare, HambergerMenu } from "iconsax-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+const MemberLogin = () => {
+  return (
+    <a href="https://bukaa.rel8membership.com/verify-membership" target="_blank" rel="noopener noreferrer">
+      <Button fontWeight={600}>Member Login</Button>
+    </a>
+  );
+};
+
+
 export function Header() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -71,10 +80,11 @@ export function Header() {
             </Link>
           </Show>
 
-          <Show above="md">
-            <Link href="#contact">
+          <Show above="md">  
+            {/* <Link href="https://bukaa.rel8membership.com/verify-membership">
               <Button fontWeight={600}>Member Login</Button>
-            </Link>
+            </Link> */}
+            <MemberLogin />
           </Show>
 
           <IconButton
