@@ -133,9 +133,10 @@ function HeaderMenu() {
       <Link href="#contact">
         <Text fontWeight={600}>Contact Sales</Text>
       </Link>{" "}
-      <Link href="#contact">
+      {/* <Link href="#contact">
         <Button fontWeight={600}>Member Login</Button>
-      </Link>
+      </Link> */}
+      <MemberLogin />
     </Flex>
   );
 }
