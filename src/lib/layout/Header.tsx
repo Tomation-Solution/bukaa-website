@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 const MemberLogin = () => {
   return (
-    <a href="https://bukaa.rel8membership.com/verify-membership" target="_blank" rel="noopener noreferrer">
+    <a href="https://bukaa.rel8membership.com/login" target="_blank" rel="noopener noreferrer">
       <Button fontWeight={600}>Member Login</Button>
     </a>
   );
@@ -60,7 +60,7 @@ export function Header() {
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
                 <Link href="/news">News</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
-                <Link href="/">Gallery</Link>
+                <Link href="/gallery">Gallery</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
                 <Link href="/publication">Publications</Link>
               </Flex>
