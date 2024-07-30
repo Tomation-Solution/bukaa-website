@@ -47,7 +47,7 @@ const GalleryPage: React.FC = () => {
                 <Image src={folder.images[0]?.image || '/default-image.jpeg'} roundedTop={'lg'} height={'100%'} width={'100%'} alt={folder.name} />
               </Box>
               <Flex flexDirection={'column'} gap={2} align={'center'} p={4} height={'40%'}>
-                <Text fontWeight={600} color={'primary.sub'} align={'center'}>
+                <Text fontWeight={600} color={'primary.sub'} align={'center'} fontSize={'22px'}>
                   {folder.name}
                 </Text>
                 <Text fontWeight={400} color={'primary.main'} align={'center'}>

@@ -8,8 +8,11 @@ import { useState, useEffect, useRef, MutableRefObject } from "react";
 import { useRouter } from "next/navigation";
 
 const MemberLogin = () => {
+
+  const loginUrl = process.env.NEXT_PUBLIC_MEMBER_LOGIN_URL;
+
   return (
-    <a href="https://bukaa.rel8membership.com/login" target="_blank" rel="noopener noreferrer">
+    <a href={loginUrl} target="_blank" rel="noopener noreferrer">
       <Button fontWeight={600}>Member Login</Button>
     </a>
   );
