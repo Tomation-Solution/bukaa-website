@@ -4,7 +4,7 @@ import { Button, Flex, IconButton, Image, Text, Show, Box } from "@chakra-ui/rea
 import { Icon } from "@chakra-ui/icons";
 import Link from "next/link";
 import { CloseSquare, HambergerMenu } from "iconsax-react";
-import { useState } from "react";
+import { useState, useEffect, useRef, MutableRefObject } from "react";
 import { useRouter } from "next/navigation";
 
 const MemberLogin = () => {
@@ -15,10 +15,24 @@ const MemberLogin = () => {
   );
 };
 
-
 export function Header() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <Flex
       direction={"column"}
@@ -28,20 +42,19 @@ export function Header() {
       w={"100vw"}
     >
       <Flex
-        px={"8%"}
+        px={{ base: "4%", md: "8%" }}
         py={"1rem"}
         justify={"space-between"}
         align={"center"}
         borderBottomWidth={1}
         w={"100%"}
         bg={"white"}
-        gap="2ewm"
       >
         <Link href={"/"}>
-          <Flex cursor={"pointer"} align={"center"} gap={"5rem"}>
+          <Flex cursor={"pointer"} align={"center"} gap={{ base: "1rem", md: "5rem" }}>
             <Flex cursor={"pointer"} align={"center"} gap={"1rem"}>
               <Image src="/log.jpg" w={"40px"} h={"40px"} alt="" />
-              <Text fontWeight={600} fontSize={'20px'} color={"secondary.main"}>
+              <Text fontWeight={600} fontSize={{ base: "16px", md: "20px" }} color={"secondary.main"}>
                 BUUKA
               </Text>
             </Flex>
@@ -80,16 +93,13 @@ export function Header() {
             </Link>
           </Show>
 
-          <Show above="md">  
-            {/* <Link href="https://bukaa.rel8membership.com/verify-membership">
-              <Button fontWeight={600}>Member Login</Button>
-            </Link> */}
+          <Show above="md">
             <MemberLogin />
           </Show>
 
           <IconButton
             onClick={() => setIsOpen(!isOpen)}
-            display={{ base: "flex", lg: "none" }}
+            display={{ base: "flex", md: "none" }}
             variant={"sub"}
             px={{ base: "1rem", lg: "1.2rem" }}
             fontSize={"1.2rem"}
@@ -103,13 +113,20 @@ export function Header() {
           />
         </Flex>
       </Flex>
-      {isOpen && <HeaderMenu />}
+      {isOpen && <HeaderMenu setIsOpen={setIsOpen} dropdownRef={dropdownRef} />}
     </Flex>
   );
 }
 
-function HeaderMenu() {
-  const router = useRouter();
+interface HeaderMenuProps {
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  dropdownRef: MutableRefObject<HTMLDivElement | null>;
+}
+
+function HeaderMenu({ setIsOpen, dropdownRef }: HeaderMenuProps) {
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
 
   return (
     <Flex
@@ -123,19 +140,17 @@ function HeaderMenu() {
       w={"100%"}
       boxShadow={"2xl"}
       color={"secondary.main"}
+      ref={dropdownRef}
     >
-      <Link href="#about">About us</Link>
-      <Link href="#mission">Mission</Link>
-      <Link href="/events">Events</Link>
-      <Link href="/news">News</Link>
-      <Link href="/">Gallery</Link>
-      <Link href="/publication">Publications</Link>
-      <Link href="#contact">
+      <Link href="#about" onClick={handleLinkClick}>About us</Link>
+      <Link href="#mission" onClick={handleLinkClick}>Mission</Link>
+      <Link href="/events" onClick={handleLinkClick}>Events</Link>
+      <Link href="/news" onClick={handleLinkClick}>News</Link>
+      <Link href="/gallery" onClick={handleLinkClick}>Gallery</Link>
+      <Link href="/publication" onClick={handleLinkClick}>Publications</Link>
+      <Link href="#contact" onClick={handleLinkClick}>
         <Text fontWeight={600}>Contact Sales</Text>
-      </Link>{" "}
-      {/* <Link href="#contact">
-        <Button fontWeight={600}>Member Login</Button>
-      </Link> */}
+      </Link>
       <MemberLogin />
     </Flex>
   );
