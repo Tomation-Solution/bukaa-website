@@ -29,7 +29,7 @@ const GalleryViewById: React.FC = () => {
         </Text>
         <Flex justify={"center"} align={"center"} flexDirection={"column"} position={"absolute"} whiteSpace={"nowrap"} textAlign={"center"} top={"-50%"} left={"50%"} transform={"translate(-50%, -50%)"} zIndex={0}>
           <Box h={"50px"} w={"2px"} bg={"secondary.sub_"}></Box>
-          <Text color={"secondary.sub_"} textAlign={"center"} fontSize={"60px"} fontWeight={300}>
+          <Text color={"secondary.sub_"} textAlign={"center"} fontSize={['40px', '60px']} fontWeight={300}>
             {galleryData.name}
           </Text>
         </Flex>
