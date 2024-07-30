@@ -3,34 +3,8 @@ import React from 'react';
 import { useParams } from 'next/navigation';
 import { useQuery } from 'react-query';
 import { Text, Flex, Box, Image, Spinner } from "@chakra-ui/react";
-
-// Define the type for the gallery data
-interface GalleryImage {
-  id: string;
-  image: string;
-}
-
-interface GalleryData {
-  name: string;
-  date_taken: string;
-  images: GalleryImage[];
-}
-
-const fetchGalleryById = async (id: string) => {
-  const tenantName = process.env.NEXT_PUBLIC_TENANT_NAME; 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
-
-  const response = await fetch(`${baseUrl}/tenant/${tenantName}/tenant/extras/gallery_version2/unauthorized_images/${id}/`);
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-  const result = await response.json();
-  if (result.status_code !== 200) {
-    throw new Error(result.message || "Failed to fetch data");
-  }
-  return result.data as GalleryData; // Cast result.data to the expected type
-};
+import { fetchGalleryById } from '@/utils/fetchGalleryById';
+import { GalleryData, GalleryImage } from '@/types';
 
 const GalleryViewById: React.FC = () => {
   const { id } = useParams() as { id: string };

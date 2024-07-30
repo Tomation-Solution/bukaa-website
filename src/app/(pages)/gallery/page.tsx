@@ -3,33 +3,8 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { Text, Flex, Box, Image, Spinner } from '@chakra-ui/react';
 import Link from 'next/link';
-
-interface GalleryImage {
-  id: number;
-  image: string;
-}
-
-interface GalleryFolder {
-  id: number;
-  name: string;
-  date_taken: string;
-  images: GalleryImage[];
-}
-
-const fetchGalleryData = async (): Promise<GalleryFolder[]> => {
-  const tenantName = process.env.NEXT_PUBLIC_TENANT_NAME; 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL; 
-
-  const response = await fetch(`${baseUrl}/tenant/${tenantName}/tenant/extras/gallery_version2/get_unauthorized_images/`);
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-  const result = await response.json();
-  if (result.status_code !== 200) {
-    throw new Error(result.message || 'Failed to fetch data');
-  }
-  return result.data.data as GalleryFolder[];
-};
+import { fetchGalleryData } from '@/utils/fetchGalleryData';
+import { GalleryFolder } from '@/types';
 
 const GalleryPage: React.FC = () => {
   const { data: galleryData, error, isLoading } = useQuery<GalleryFolder[], Error>('galleryData', fetchGalleryData);
