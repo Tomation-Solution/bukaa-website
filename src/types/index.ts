@@ -92,3 +92,19 @@ export interface Publication {
     data: Event;
     success: boolean;
   }
+
+  //------News------
+  export interface NewsItems {
+    id: string;
+    name: string;
+    image: string;
+    body: string;
+  }
+  
+  export interface NewsData {
+    body: string;
+    created_at: string;
+    name: string;
+    image: string;
+  }
+  
