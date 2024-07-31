@@ -1,8 +1,28 @@
-import { Text, Flex, Box, Image } from "@chakra-ui/react";
+'use client'
+import { fetchNews } from "@/utils/fetchNews";
+import { Text, Flex, Box, Image, Spinner } from "@chakra-ui/react";
 import Link from "next/link";
-// import Image from "next/image";
+import { useQuery } from 'react-query';
+import { NewsItems } from '@/types';
 
 const News = () => {
+  const { data, error, isLoading } = useQuery<NewsItems[]>('news', fetchNews);
+
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength) + '...';
+  };
+
+  if (isLoading) {
+    return (
+      <Flex justify="center" align="center" height="70vh">
+        <Spinner size="xl" />
+      </Flex>
+    );
+  }
+
+  if (error) return <Text>Error loading events</Text>;
+
   return (
     <>
       <Flex
@@ -60,158 +80,37 @@ const News = () => {
           </Text>
         </Flex>
 
-        <Flex
-          justifyContent={"center"}
-          textAlign={"center"}
-          align={"center"}
-          w={{ base: "80%", lg: "100%" }}
-          flexWrap={"wrap"}
-          gap={"50px"}
-        >
-          <Flex
-            flexDirection="column"
-            width={{ base: "100%", lg: "25%" }}
-            height={"500px"}
-            boxShadow={"lg"}
-            rounded={"lg"}
-          >
-            <Link href={"/news/343"}>
-              <Box height={"60%"}>
-                <Image
-                  src={"/pic1.jpeg"}
-                  roundedTop={"lg"}
-                  height={"100%"}
-                  width={"100%"}
-                  alt=""
-                />
-              </Box>
-              <Flex
-                flexDirection={"column"}
-                gap={2}
-                align={"center"}
-                p={4}
-                height={"40%"}
-              >
-                <Text fontWeight={600} color={"primary.sub"} align={"center"}>
-                  Introduction to Web
-                </Text>
-                <Text fontWeight={400} color={"primary.main"} align={"center"}>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Possimus aliquid quod doloremque, nobis eveniet sed atque,
-                  iusto non placeat cumque ex nesciunt fugit neque amet
-                  repudiandae expedita delectus minus eos.
-                </Text>
-              </Flex>
-            </Link>
-          </Flex>
-          <Flex
-            flexDirection="column"
-            width={{ base: "100%", lg: "25%" }}
-            height={"500px"}
-            boxShadow={"lg"}
-            rounded={"lg"}
-          >
-            <Link href={"/news/343"}>
-              <Box height={"60%"}>
-                <Image
-                  src={"/pic1.jpeg"}
-                  roundedTop={"lg"}
-                  height={"100%"}
-                  width={"100%"}
-                  alt=""
-                />
-              </Box>
-              <Flex
-                flexDirection={"column"}
-                gap={2}
-                align={"center"}
-                p={4}
-                height={"40%"}
-              >
-                <Text fontWeight={600} color={"primary.sub"} align={"center"}>
-                  Introduction to Web
-                </Text>
-                <Text fontWeight={400} color={"primary.main"} align={"center"}>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Possimus aliquid quod doloremque, nobis eveniet sed atque,
-                  iusto non placeat cumque ex nesciunt fugit neque amet
-                  repudiandae expedita delectus minus eos.
-                </Text>
-              </Flex>
-            </Link>
-          </Flex>
-          <Flex
-            flexDirection="column"
-            width={{ base: "100%", lg: "25%" }}
-            height={"500px"}
-            boxShadow={"lg"}
-            rounded={"lg"}
-          >
-            <Link href={"/news/343"}>
-              <Box height={"60%"}>
-                <Image
-                  src={"/pic1.jpeg"}
-                  roundedTop={"lg"}
-                  height={"100%"}
-                  width={"100%"}
-                  alt=""
-                />
-              </Box>
-              <Flex
-                flexDirection={"column"}
-                gap={2}
-                align={"center"}
-                p={4}
-                height={"40%"}
-              >
-                <Text fontWeight={600} color={"primary.sub"} align={"center"}>
-                  Introduction to Web
-                </Text>
-                <Text fontWeight={400} color={"primary.main"} align={"center"}>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Possimus aliquid quod doloremque, nobis eveniet sed atque,
-                  iusto non placeat cumque ex nesciunt fugit neque amet
-                  repudiandae expedita delectus minus eos.
-                </Text>
-              </Flex>
-            </Link>
-          </Flex>
-          <Flex
-            flexDirection="column"
-            width={{ base: "100%", lg: "25%" }}
-            height={"500px"}
-            boxShadow={"lg"}
-            rounded={"lg"}
-          >
-            <Link href={"/news/343"}>
-              <Box height={"60%"}>
-                <Image
-                  src={"/pic1.jpeg"}
-                  roundedTop={"lg"}
-                  height={"100%"}
-                  width={"100%"}
-                  alt=""
-                />
-              </Box>
-              <Flex
-                flexDirection={"column"}
-                gap={2}
-                align={"center"}
-                p={4}
-                height={"40%"}
-              >
-                <Text fontWeight={600} color={"primary.sub"} align={"center"}>
-                  Introduction to Web
-                </Text>
-                <Text fontWeight={400} color={"primary.main"} align={"center"}>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Possimus aliquid quod doloremque, nobis eveniet sed atque,
-                  iusto non placeat cumque ex nesciunt fugit neque amet
-                  repudiandae expedita delectus minus eos.
-                </Text>
-              </Flex>
-            </Link>
-          </Flex>
+        <Flex justifyContent={"center"} textAlign={"center"} align={"center"} w={{ base: "80%", lg: "100%" }} flexWrap={"wrap"} gap={"50px"}>
+          {data?.map((news) => (
+            <Flex
+              key={news.id}
+              flexDirection="column"
+              width={{ base: "100%", lg: "25%" }}
+              height={"420px"}
+              boxShadow={"lg"}
+              rounded={"lg"}
+            >
+              <Link href={`/news/${news.id}`}>
+                <Box height={"60%"}>
+                  <Image
+                    src={news.image || '/default-image.png'}
+                    roundedTop={"lg"}
+                    height={"250px"}
+                    width={"100%"}
+                    alt={news.name}
+                  />
+                </Box>
+                <Flex flexDirection={"column"} gap={2} align={"center"} p={4} height={"40%"}>
+                  <Text fontWeight={600} color={"primary.sub"} align={"center"}>
+                    {news.name}
+                  </Text>
+                  <Text fontWeight={400} color={"primary.main"} align={"start"}>
+                    {truncateText(news.body, 100)} <Link href={`/news/${news.id}`}>Read more</Link>
+                  </Text>
+                </Flex>
+              </Link>
+            </Flex>
+          ))}
         </Flex>
       </Flex>
     </>

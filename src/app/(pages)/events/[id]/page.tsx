@@ -3,12 +3,12 @@ import React from 'react';
 import { useParams } from 'next/navigation';
 import { useQuery } from 'react-query';
 import { Text, Flex, Box, Image, Spinner } from "@chakra-ui/react";
-import { fetchNewsById } from '@/utils/fetchNewsById';
-import { NewsData } from '@/types';
+import { fetchEventById } from '@/utils/fetchEventsById';
+import { Event, ApiResponse } from '@/types';
 
 const PublicationDetail: React.FC = () => {
   const { id } = useParams() as { id: string };
-  const { data: newsData, error, isLoading } = useQuery<NewsData, Error>(['newsData', id], () => fetchNewsById(id));
+  const { data: eventData, error, isLoading } = useQuery<ApiResponse, Error>(['eventData', id], () => fetchEventById(id));
 
   if (isLoading) {
     return (
@@ -19,35 +19,49 @@ const PublicationDetail: React.FC = () => {
   }
 
   if (error) return <Text align="center" mt={8}>Error: {error.message}</Text>;
-  if (!newsData) return <Text align="center" mt={8}>No Data Available</Text>;
+  if (!eventData || !eventData.data) return <Text align="center" mt={8}>No Data Available</Text>;
+
+  const event: Event = eventData.data;
 
   return (
     <Flex justify={"center"} align={"center"} flexDirection={"column"} gap={16} my={48}>
       <Box position={"relative"}>
         <Text color={"primary.main"} fontSize={"16px"} fontWeight={500} zIndex={40} position={"relative"}>
-          News
+          EVENT DETAILS
         </Text>
         <Flex justify={"center"} align={"center"} flexDirection={"column"} position={"absolute"} whiteSpace={"nowrap"} textAlign={"center"} top={"-50%"} left={"50%"} transform={"translate(-50%, -50%)"} zIndex={0}>
           <Box h={"50px"} w={"2px"} bg={"secondary.sub_"}></Box>
           <Text color={"secondary.sub_"} textAlign={"center"} fontSize={"60px"} fontWeight={300}>
-            News
+            Event
           </Text>
         </Flex>
       </Box>
 
       <Flex flexDirection="column" width={{ base: "80%", lg: "50%" }} height={"auto"} boxShadow={"lg"} rounded={"lg"}>
         <Box height={"auto"}>
-          <Image src={newsData.image} roundedTop={"lg"} width={"100%"} alt={newsData.name} />
+          <Image src={event.image || '/default-image.jpg'} roundedTop={"lg"} width={"100%"} alt={event.name} />
         </Box>
         <Flex flexDirection={"column"} gap={2} align={"center"} p={4} height={"auto"}>
           <Text fontWeight={600} color={"primary.sub"} align={"center"}>
-            {newsData.name}
+            {event.name}
           </Text>
           <Text fontWeight={400} color={"primary.main"} align={"center"}>
-            Date Released: {new Date(newsData.created_at).toLocaleDateString()}
+            Organised by: {event.organiser_name}
           </Text>
           <Text fontWeight={400} color={"primary.main"} align={"center"}>
-            {newsData.body}
+            Address: <a href={event.address} target="_blank" rel="noopener noreferrer">{event.address}</a>
+          </Text>
+          <Text fontWeight={400} color={"primary.main"} align={"center"}>
+            Amount: {event.is_paid_event ? `${event.amount} (Paid)` : 'Free'}
+          </Text>
+          <Text fontWeight={400} color={"primary.main"} align={"center"}>
+            Start Date: {new Date(event.startDate).toLocaleDateString()}
+          </Text>
+          <Text fontWeight={400} color={"primary.main"} align={"center"}>
+            Start Time: {event.startTime}
+          </Text>
+          <Text fontWeight={400} color={"primary.main"} align={"center"}>
+            {event.event_extra_details}
           </Text>
         </Flex>
       </Flex>

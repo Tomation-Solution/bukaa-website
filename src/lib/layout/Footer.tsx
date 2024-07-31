@@ -43,7 +43,7 @@ export function Footer() {
           >
             <IoMail color="#252525" />
             <Text fontSize={"1rem"} color={"primary.main"}>
-              info@brand.com
+              info@bukaa.com
             </Text>
           </Flex>
 
