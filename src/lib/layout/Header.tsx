@@ -58,7 +58,7 @@ export function Header() {
             <Flex cursor={"pointer"} align={"center"} gap={"1rem"}>
               <Image src="/log.jpg" w={"40px"} h={"40px"} alt="" />
               <Text fontWeight={600} fontSize={{ base: "16px", md: "20px" }} color={"secondary.main"}>
-                BUUKA
+                BUKAA
               </Text>
             </Flex>
             <Show above="md">
