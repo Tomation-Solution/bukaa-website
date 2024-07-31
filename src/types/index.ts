@@ -59,3 +59,36 @@ export interface Publication {
     images: GalleryImage[];
   }
   
+//  ---------------------------------------- Event ------------------------
+  export interface Event {
+    id: string;
+    name: string;
+    image: string;
+    amount: string;
+    event_extra_details: string;
+    is_paid_event: boolean;
+    re_occuring: boolean;
+    is_virtual: boolean;
+    event_docs: string | null;
+    is_for_excos: boolean;
+    is_active: boolean;
+    address: string;
+    organiser_name: string;
+    organiser_extra_info: string;
+    organiserImage: string | null;
+    is_special: boolean;
+    startDate: string;
+    startTime: string;
+    scheduletype: string;
+    schedule: string[];
+    exco: string | null;
+    commitee: string | null;
+    chapters: string | null;
+  }
+  
+  export interface ApiResponse {
+    message: string;
+    status_code: number;
+    data: Event;
+    success: boolean;
+  }
