@@ -92,7 +92,7 @@ export function Header() {
         >
           <Show above="md">
             <Link href="#contact">
-              <Text fontWeight={600}>Contact Sales</Text>
+              <Text fontWeight={600}>Contact</Text>
             </Link>
           </Show>
 
@@ -152,7 +152,7 @@ function HeaderMenu({ setIsOpen, dropdownRef }: HeaderMenuProps) {
       <Link href="/gallery" onClick={handleLinkClick}>Gallery</Link>
       <Link href="/publication" onClick={handleLinkClick}>Publications</Link>
       <Link href="#contact" onClick={handleLinkClick}>
-        <Text fontWeight={600}>Contact Sales</Text>
+        <Text fontWeight={600}>Contact</Text>
       </Link>
       <MemberLogin />
     </Flex>
