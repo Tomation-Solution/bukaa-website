@@ -30,8 +30,8 @@ export function Footer() {
             whiteSpace={"nowrap"}
           >
             <IoCall color="#252525" />
-            <Text fontSize={"1rem"} color={"primary.main"}>
-              +234 445 4454 334
+            <Text as="a" href="tel:+2348060526928" fontSize={"1rem"} color={"primary.main"}>
+              +234 806 0526 928
             </Text>
           </Flex>
 
