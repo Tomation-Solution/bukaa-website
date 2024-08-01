@@ -283,6 +283,21 @@ const Members = () => {
                   Ex Officio South West
                 </Text>
               </Flex>{" "}
+              <Flex flexDirection={"column"} gap={2} align={"center"}>
+                <Image
+                  src={"/Georgina Ekeka.jpeg"}
+                  width={"150px"}
+                  height={"150px"}
+                  borderRadius={"full"}
+                  alt="executive"
+                />
+                <Text fontWeight={600} color={"primary.sub"} align={"center"}>
+                  Mrs Georgina Ekeka
+                </Text>
+                <Text fontWeight={400} color={"primary.main"} align={"center"}>
+                  Ex Officio South East
+                </Text>
+              </Flex>{" "}
             </Flex>
           </Flex>
 

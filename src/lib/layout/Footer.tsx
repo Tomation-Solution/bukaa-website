@@ -19,7 +19,7 @@ export function Footer() {
         <Flex flexDirection={"row"} gap={5} justifyContent={'center'} alignItems={'center'}>
           <Image src="/log.jpg" w={"100px"} h={"100px"} alt="" />
           <Text fontWeight={600} fontSize={"24px"} color={"secondary.main"}>
-            BUUKA
+            BUKAA
           </Text>
         </Flex>
         <Flex flexDirection={"column"} align={"start"} gap={2}>
@@ -30,8 +30,8 @@ export function Footer() {
             whiteSpace={"nowrap"}
           >
             <IoCall color="#252525" />
-            <Text fontSize={"1rem"} color={"primary.main"}>
-              +234 445 4454 334
+            <Text as="a" href="tel:+2348060526928" fontSize={"1rem"} color={"primary.main"}>
+              +234 806 0526 928
             </Text>
           </Flex>
 
