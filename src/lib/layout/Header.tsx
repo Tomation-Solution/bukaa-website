@@ -58,12 +58,12 @@ export function Header() {
             <Flex cursor={"pointer"} align={"center"} gap={"1rem"}>
               <Image src="/log.jpg" w={"40px"} h={"40px"} alt="" />
               <Text fontWeight={600} fontSize={{ base: "16px", md: "20px" }} color={"secondary.main"}>
-                BUUKA
+                BUKAA
               </Text>
             </Flex>
             <Show above="md">
               <Flex
-                gap={"1.5rem"}
+                 gap={["1rem", "1rem", "1rem", "1rem", "1.5rem"]}
                 align={"center"}
                 fontWeight="500"
                 color={"secondary.main"}
@@ -91,7 +91,7 @@ export function Header() {
           color={"secondary.main"}
         >
           <Show above="md">
-            <Link href="#contact">
+            <Link href="mailto:info@bukaa.com">
               <Text fontWeight={600}>Contact</Text>
             </Link>
           </Show>
@@ -151,7 +151,7 @@ function HeaderMenu({ setIsOpen, dropdownRef }: HeaderMenuProps) {
       <Link href="/news" onClick={handleLinkClick}>News</Link>
       <Link href="/gallery" onClick={handleLinkClick}>Gallery</Link>
       <Link href="/publication" onClick={handleLinkClick}>Publications</Link>
-      <Link href="#contact" onClick={handleLinkClick}>
+      <Link href="mailto:info@bukaa.com" onClick={handleLinkClick}>
         <Text fontWeight={600}>Contact</Text>
       </Link>
       <MemberLogin />

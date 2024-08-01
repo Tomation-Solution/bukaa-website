@@ -19,7 +19,7 @@ export function Footer() {
         <Flex flexDirection={"row"} gap={5} justifyContent={'center'} alignItems={'center'}>
           <Image src="/log.jpg" w={"100px"} h={"100px"} alt="" />
           <Text fontWeight={600} fontSize={"24px"} color={"secondary.main"}>
-            BUUKA
+            BUKAA
           </Text>
         </Flex>
         <Flex flexDirection={"column"} align={"start"} gap={2}>
