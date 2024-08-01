@@ -91,7 +91,7 @@ export function Header() {
           color={"secondary.main"}
         >
           <Show above="md">
-            <Link href="mailto:info@bukaa.com">
+            <Link href="mailto:info@bukaa.org">
               <Text fontWeight={600}>Contact</Text>
             </Link>
           </Show>
@@ -151,7 +151,7 @@ function HeaderMenu({ setIsOpen, dropdownRef }: HeaderMenuProps) {
       <Link href="/news" onClick={handleLinkClick}>News</Link>
       <Link href="/gallery" onClick={handleLinkClick}>Gallery</Link>
       <Link href="/publication" onClick={handleLinkClick}>Publications</Link>
-      <Link href="mailto:info@bukaa.com" onClick={handleLinkClick}>
+      <Link href="mailto:info@bukaa.org" onClick={handleLinkClick}>
         <Text fontWeight={600}>Contact</Text>
       </Link>
       <MemberLogin />
