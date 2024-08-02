@@ -2,6 +2,7 @@ import { Flex, Text, Image } from "@chakra-ui/react";
 import { IoCall, IoMail } from "react-icons/io5";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { SiAppstore } from "react-icons/si";
+import { LinkIcon } from '@chakra-ui/icons'
 
 export function Footer() {
 
@@ -46,6 +47,18 @@ export function Footer() {
               info@bukaa.org
             </Text>
           </Flex>
+
+          <Flex
+          align={"center"}
+          justify={"start"}
+          gap={2}
+          whiteSpace={"nowrap"}
+        >
+          <LinkIcon color="#252525" />
+          <Text as="a" href="https://forms.gle/9yfsPMNJeCF7Nag46" fontSize={"1rem"} color={"primary.main"}>
+            Register Membership Data
+          </Text>
+        </Flex>
 
           <Flex
             align={"center"}
