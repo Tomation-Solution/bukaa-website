@@ -108,3 +108,29 @@ export interface Publication {
     image: string;
   }
   
+//---------------Event Registeration
+export type ApiError = {
+  message?: string;
+  data?: {
+    email?: string[];
+  };
+};
+
+export interface Event {
+  id: string;
+  name: string;
+  image: string;
+  address: string;
+  startDate: string;
+  startTime: string;
+  amount: string;
+  is_paid_event: boolean;
+  is_virtual: boolean;
+  is_active: boolean;
+  organiser_name: string;
+  organiser_extra_info: string;
+}
+
+export interface ApiResponse {
+  data: Event;
+}

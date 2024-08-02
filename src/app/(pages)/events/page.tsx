@@ -1,14 +1,21 @@
 'use client'
 import { Event } from "@/types";
 import { fetchEvents } from "@/utils/fetchEvents";
-import { Text, Flex, Box, Image, Spinner } from "@chakra-ui/react";
+import { Text, Flex, Box, Image, Spinner, Button, useMediaQuery } from "@chakra-ui/react";
 import Link from "next/link";
 import { useQuery } from 'react-query';
 
+const formatAmount = (amount: string) => {
+  const numericAmount = parseFloat(amount);
+  if (numericAmount === 0) {
+    return "Free";
+  }
+  return numericAmount.toLocaleString();
+};
+
 const EventsComponent: React.FC = () => {
   const { data, error, isLoading } = useQuery<Event[]>('events', fetchEvents);
-
-  console.log(data);
+  const [isLargerScreen] = useMediaQuery("(min-width: 768px)");
 
   if (isLoading) {
     return (
@@ -80,7 +87,7 @@ const EventsComponent: React.FC = () => {
               key={event.id}
               flexDirection="column"
               width={{ base: "100%", lg: "25%" }}
-              height={"550px"}
+              height={"100%"}
               boxShadow={"lg"}
               rounded={"lg"}
             >
@@ -89,7 +96,8 @@ const EventsComponent: React.FC = () => {
                   <Image
                     src={event.image || '/default-image.png'}
                     roundedTop={"lg"}
-                    height={"100%"}
+                    // height={"250px"}
+                    height={isLargerScreen ? "250px" : "200px"}
                     width={"100%"}
                     alt={event.name}
                   />
@@ -103,23 +111,16 @@ const EventsComponent: React.FC = () => {
                       Start Date: {new Date(event.startDate).toLocaleDateString()}
                     </Text>
                     <Text fontWeight={400} color={"primary.main"} align={"start"}>
-                      Start Time: {event.startTime}
-                    </Text>
-                    <Text fontWeight={400} color={"primary.main"} align={"start"}>
-                      Amount: {event.amount}
-                    </Text>
-                    <Text fontWeight={400} color={"primary.main"} align={"start"}>
-                      Organiser: {event.organiser_name}
-                    </Text>
-                    <Text fontWeight={400} color={"primary.main"} align={"start"}>
-                      Paid Event: {event.is_paid_event ? 'Yes' : 'No'}
+                      Amount: {formatAmount(event.amount)}
                     </Text>
                     <Text fontWeight={400} color={"primary.main"} align={"start"}>
                       Virtual Event: {event.is_virtual ? 'Yes' : 'No'}
                     </Text>
-                    <Text fontWeight={400} color={"primary.main"} align={"start"}>
-                      Extra Info: {event.event_extra_details}
-                    </Text>
+                    <Box display="flex" justifyContent="flex-end" width="100%">
+                      <Button colorScheme="blue" variant="outline" size='sm'>
+                        Register
+                      </Button>
+                    </Box>
                   </Flex>
                 </Flex>
               </Link>
