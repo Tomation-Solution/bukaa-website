@@ -6,6 +6,8 @@ import { Text, Flex, Box, Image, Spinner, Input, Button, Select, useMediaQuery, 
 import { fetchEventById } from '@/utils/fetchEventsById';
 import { registerForEvent } from '@/utils/RegisterForEvent';
 import { Event, ApiResponse, ApiError } from '@/types';
+import { FaMapMarkerAlt, FaCalendarAlt, FaClock, FaDollarSign } from 'react-icons/fa';
+import { MdOutlineEventAvailable, MdOutlineEventBusy } from 'react-icons/md';
 
 const EventDetails: React.FC = () => {
   const { id } = useParams() as { id: string };
@@ -69,6 +71,10 @@ const EventDetails: React.FC = () => {
 
   const event: Event = eventData.data;
 
+  const formatAmount = (amount: number) => {
+    return new Intl.NumberFormat('en-US').format(amount);
+  };
+
   return (
     <Flex justify={"center"} align={"center"} flexDirection={"column"} gap={16} my={48}>
       <Box position={"relative"}>
@@ -91,29 +97,29 @@ const EventDetails: React.FC = () => {
           <Text fontWeight={600} color={"primary.sub"} align={"center"} fontSize={isLargerScreen ? "2xl" : "md"}>
             {event.name}
           </Text>
-          <Text fontWeight={400} color={"primary.main"} align={"start"}>
-            Status: {event.is_active ? 'Active' : 'Inactive'}
+          <Text fontWeight={400} color={"primary.main"} align={"start"} display="flex" alignItems="center" gap={2}>
+            {event.is_active ? <MdOutlineEventAvailable /> : <MdOutlineEventBusy />} Status: {event.is_active ? 'Active' : 'Inactive'}
           </Text>
-          <Text fontWeight={400} color={"primary.main"} align={"start"}>
-            Address: <a href={event.address} target="_blank" rel="noopener noreferrer">{event.address}</a>
+          <Text fontWeight={400} color={"primary.main"} align={"start"} display="flex" alignItems="center" gap={2}>
+            <FaMapMarkerAlt /><a href={event.address} target="_blank" rel="noopener noreferrer">{event.address}</a>
           </Text>
-          <Text fontWeight={400} color={"primary.main"} align={"start"}>
-            Date: {new Date(event.startDate).toLocaleDateString()}
+          <Text fontWeight={400} color={"primary.main"} align={"start"} display="flex" alignItems="center" gap={2}>
+            <FaCalendarAlt />{new Date(event.startDate).toLocaleDateString()}
           </Text>
-          <Text fontWeight={400} color={"primary.main"} align={"start"}>
-            Time: {event.startTime}
+          <Text fontWeight={400} color={"primary.main"} align={"start"} display="flex" alignItems="center" gap={2}>
+            <FaClock />{event.startTime}
           </Text>
-          <Text fontWeight={400} color={"primary.main"} align={"start"}>
-            Amount: {event.is_paid_event ? `${event.amount} (Paid)` : 'Free'}
+          <Text fontWeight={400} color={"primary.main"} align={"start"} display="flex" alignItems="center" gap={2}>
+            <FaDollarSign /> Amount: {event.is_paid_event ? `${formatAmount(parseFloat(event.amount))} (Paid)` : 'Free'}
           </Text>
-          <Text fontWeight={400} color={"primary.main"} align={"start"}>
+          <Text fontWeight={400} color={"primary.main"} align={"start"} display="flex" alignItems="center" gap={2}>
             Virtual Event: {event.is_virtual ? 'Yes' : 'No'}
           </Text>
-          <Text fontWeight={400} color={"primary.main"} align={"start"}>
+          <Text fontWeight={400} color={"primary.main"} align={"start"} display="flex" alignItems="center" gap={2}>
             Organised by: {event.organiser_name}
           </Text>
-          <Text fontWeight={400} color={"primary.main"} align={"start"}>
-            Organiser's Contact: {event.organiser_extra_info}
+          <Text fontWeight={400} color={"primary.main"} align={"start"} display="flex" alignItems="center" gap={2}>
+            Organiser Contact: {event.organiser_extra_info}
           </Text>
         </Flex>
       </Flex>
@@ -126,7 +132,7 @@ const EventDetails: React.FC = () => {
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </Select>
-        {isMember === 'yes' ? (
+        {isMember && (isMember === 'yes' ? (
           <a href={loginUrl}>
             <Button colorScheme="blue" variant="outline" size='md' width={"30%"}>
               Login
@@ -150,7 +156,7 @@ const EventDetails: React.FC = () => {
               Register
             </Button>
           </form>
-        )}
+        ))}
       </Flex>
     </Flex>
   );

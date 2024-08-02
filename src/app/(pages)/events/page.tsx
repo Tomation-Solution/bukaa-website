@@ -103,7 +103,7 @@ const EventsComponent: React.FC = () => {
                   />
                 </Box>
                 <Flex flexDirection={"column"} gap={2} align={"center"} p={4} height={"0%"}>
-                  <Text fontWeight={600} color={"primary.sub"} align={"center"}>
+                  <Text fontWeight={600} fontSize={"20px"} color={"primary.sub"} align={"center"}>
                     {event.name}
                   </Text>
                   <Flex flexDirection={"column"} gap={2} align={"start"} w={"100%"}>

@@ -1,9 +1,23 @@
 import { Box, Text, Flex, Image } from "@chakra-ui/react";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { SiAppstore } from "react-icons/si";
-
+import { useToast } from '@chakra-ui/react';
 
 const Members = () => {
+  const toast = useToast();
+  const loginUrl = process.env.NEXT_PUBLIC_MEMBER_LOGIN_URL;
+
+  const handleClick = () => {
+    toast({
+      title: "Coming Soon",
+      description: "Get membership app for mobile is coming soon!",
+      status: "info",
+      duration: 5000,
+      isClosable: true,
+      position: "top-right",
+    });
+  };
+
     return (
       <>
         <Box bg="secondary.sub__" py={20} px={{ base: "5%", lg: "10%" }}>
@@ -309,6 +323,8 @@ const Members = () => {
             mt={32}
           >
             <Text
+            as={"a"}
+            href={loginUrl}
               fontWeight={400}
               color={"primary.main"}
               align={"center"}
@@ -324,6 +340,7 @@ const Members = () => {
               whiteSpace={"nowrap"}
               textDecoration={"underline"}
               cursor={"pointer"}
+              onClick={handleClick}
             >
               <IoLogoGooglePlaystore color="#252525" />
               <Text fontSize={"1rem"} color={"primary.main"}>
@@ -337,6 +354,7 @@ const Members = () => {
               whiteSpace={"nowrap"}
               textDecoration={"underline"}
               cursor={"pointer"}
+              onClick={handleClick}
             >
               <SiAppstore color="#252525" />
               <Text fontSize={"1rem"} color={"primary.main"}>
