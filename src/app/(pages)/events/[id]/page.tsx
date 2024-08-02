@@ -15,6 +15,7 @@ const EventDetails: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isMember, setIsMember] = useState('');
   const [isLargerScreen] = useMediaQuery("(min-width: 768px)");
+  const loginUrl = process.env.NEXT_PUBLIC_MEMBER_LOGIN_URL;
 
   const mutation = useMutation(registerForEvent, {
     onSuccess: () => {
@@ -82,33 +83,33 @@ const EventDetails: React.FC = () => {
         </Flex>
       </Box>
 
-      <Flex flexDirection={isLargerScreen ? "row" : "column"} width={{ base: "80%", lg: "80%" }} height={"auto"} boxShadow={"lg"} rounded={"lg"}>
-        <Box height={"auto"}>
+      <Flex flexDirection={isLargerScreen ? "row" : "column"} width={{ base: "80%", md: "70%", lg: "70%" }} height={"auto"} boxShadow={"lg"} rounded={"lg"}>
+        <Box height={"auto"} width={isLargerScreen ? "50%" : "100%"}>
           <Image src={event.image || '/default-image.jpg'} roundedTop={"lg"} width={"100%"} height={"100%"} alt={event.name} />
         </Box>
         <Flex flexDirection={"column"} gap={2} align={"start"} p={4} height={"auto"}>
-          <Text fontWeight={600} color={"primary.sub"} align={"center"} fontSize={isLargerScreen ? "3xl" : "md"}>
+          <Text fontWeight={600} color={"primary.sub"} align={"center"} fontSize={isLargerScreen ? "2xl" : "md"}>
             {event.name}
           </Text>
           <Text fontWeight={400} color={"primary.main"} align={"start"}>
             Status: {event.is_active ? 'Active' : 'Inactive'}
           </Text>
-          <Text fontWeight={400} color={"primary.main"} align={"center"}>
+          <Text fontWeight={400} color={"primary.main"} align={"start"}>
             Address: <a href={event.address} target="_blank" rel="noopener noreferrer">{event.address}</a>
           </Text>
-          <Text fontWeight={400} color={"primary.main"} align={"center"}>
+          <Text fontWeight={400} color={"primary.main"} align={"start"}>
             Date: {new Date(event.startDate).toLocaleDateString()}
           </Text>
-          <Text fontWeight={400} color={"primary.main"} align={"center"}>
+          <Text fontWeight={400} color={"primary.main"} align={"start"}>
             Time: {event.startTime}
           </Text>
-          <Text fontWeight={400} color={"primary.main"} align={"center"}>
+          <Text fontWeight={400} color={"primary.main"} align={"start"}>
             Amount: {event.is_paid_event ? `${event.amount} (Paid)` : 'Free'}
           </Text>
           <Text fontWeight={400} color={"primary.main"} align={"start"}>
             Virtual Event: {event.is_virtual ? 'Yes' : 'No'}
           </Text>
-          <Text fontWeight={400} color={"primary.main"} align={"center"}>
+          <Text fontWeight={400} color={"primary.main"} align={"start"}>
             Organised by: {event.organiser_name}
           </Text>
           <Text fontWeight={400} color={"primary.main"} align={"start"}>
@@ -126,9 +127,11 @@ const EventDetails: React.FC = () => {
           <option value="no">No</option>
         </Select>
         {isMember === 'yes' ? (
-          <Button colorScheme="blue" variant="outline" size='md' width={"30%"}>
-            Login
-          </Button>
+          <a href={loginUrl}>
+            <Button colorScheme="blue" variant="outline" size='md' width={"30%"}>
+              Login
+            </Button>
+          </a>
         ) : (
           <form onSubmit={handleSubmit}>
             <Input 
