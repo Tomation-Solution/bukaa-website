@@ -68,9 +68,9 @@ export function Header() {
                 fontWeight="500"
                 color={"secondary.main"}
               >
-                <Link href="#about">About us</Link>
+                <Link href="/about">About us</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
-                <Link href="#mission">Mission</Link>
+                <Link href="/mission">Mission</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
                 <Link href="/events">Events</Link>
                 <Box h={4} w={"2px"} bg={"secondary.main"}></Box>
@@ -145,8 +145,8 @@ function HeaderMenu({ setIsOpen, dropdownRef }: HeaderMenuProps) {
       color={"secondary.main"}
       ref={dropdownRef}
     >
-      <Link href="#about" onClick={handleLinkClick}>About us</Link>
-      <Link href="#mission" onClick={handleLinkClick}>Mission</Link>
+      <Link href="/about" onClick={handleLinkClick}>About us</Link>
+      <Link href="/mission" onClick={handleLinkClick}>Mission</Link>
       <Link href="/events" onClick={handleLinkClick}>Events</Link>
       <Link href="/news" onClick={handleLinkClick}>News</Link>
       <Link href="/gallery" onClick={handleLinkClick}>Gallery</Link>
