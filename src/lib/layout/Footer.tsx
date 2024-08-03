@@ -47,8 +47,7 @@ export function Footer() {
               info@bukaa.org
             </Text>
           </Flex>
-
-          <Flex
+          {/* <Flex
           align={"center"}
           justify={"start"}
           gap={2}
@@ -58,7 +57,18 @@ export function Footer() {
           <Text as="a" href="https://forms.gle/9yfsPMNJeCF7Nag46" fontSize={"1rem"} color={"primary.main"}>
             Register Membership Data
           </Text>
-        </Flex>
+        </Flex> */}
+          <Flex
+            align={"center"}
+            justify={"start"}
+            gap={2}
+            whiteSpace={"nowrap"}
+          >
+            <LinkIcon color="#252525" />
+            <Text as="a" href="https://forms.gle/9yfsPMNJeCF7Nag46" target="_blank" rel="noopener noreferrer" fontSize={"1rem"} color={"primary.main"}>
+              Register Membership Data
+            </Text>
+          </Flex>
 
           <Flex
             align={"center"}
