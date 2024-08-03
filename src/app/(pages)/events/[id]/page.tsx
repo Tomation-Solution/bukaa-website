@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useQuery, useMutation } from 'react-query';
 import { Text, Flex, Box, Image, Spinner, Input, Button, Select, useMediaQuery, useToast } from "@chakra-ui/react";
@@ -12,12 +12,24 @@ import { MdOutlineEventAvailable, MdOutlineEventBusy } from 'react-icons/md';
 const EventDetails: React.FC = () => {
   const { id } = useParams() as { id: string };
   const toast = useToast();
-  const { data: eventData, error, isLoading } = useQuery<ApiResponse, Error>(['eventData', id], () => fetchEventById(id));
+  const { data: eventData, error, isLoading } = useQuery<ApiResponse, ApiError>(['eventData', id], () => fetchEventById(id));
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [isMember, setIsMember] = useState('');
   const [isLargerScreen] = useMediaQuery("(min-width: 768px)");
   const loginUrl = process.env.NEXT_PUBLIC_MEMBER_LOGIN_URL;
+
+  useEffect(() => {
+    if (isMember === 'yes') {
+      toast({
+        title: 'Please register for the event through the membership portal',
+        status: 'info',
+        duration: 5000,
+        isClosable: true,
+        position: 'top-right',
+      });
+    }
+  }, [isMember, toast]);
 
   const mutation = useMutation(registerForEvent, {
     onSuccess: () => {
@@ -29,19 +41,23 @@ const EventDetails: React.FC = () => {
         position: 'top-right',
       });
     },
-    onError: (error: unknown) => {
+    onError: (error: ApiError) => {
       let errorMessage = 'Registration failed';
-      const apiError = error as ApiError;
-      if (apiError.message) {
-        errorMessage = apiError.message;
+      let toastStatus: 'error' | 'info' = 'error';
+
+      if (error.message && typeof error.message === 'object' && 'error' in error.message) {
+        errorMessage = (error.message as { error: string }).error;
+        if (errorMessage === 'You need to pay for this event!') {
+          toastStatus = 'info';
+        }
+      } else if (error.message === 'Validation Error' && error.data && error.data.email) {
+        errorMessage = error.data.email[0];
       }
-      if (apiError.data && apiError.data.email) {
-        errorMessage = apiError.data.email[0];
-      }
+
       toast({
-        title: 'Registration failed',
+        title: toastStatus === 'info' ? 'Information' : 'Registration failed',
         description: errorMessage,
-        status: 'error',
+        status: toastStatus,
         duration: 5000,
         isClosable: true,
         position: 'top-right',
@@ -66,7 +82,7 @@ const EventDetails: React.FC = () => {
     );
   }
 
-  if (error) return <Text align="center" mt={8}>Error: {(error as Error).message}</Text>;
+  if (error) return <Text align="center" mt={8}>Error: {error.message}</Text>;
   if (!eventData || !eventData.data) return <Text align="center" mt={8}>No Data Available</Text>;
 
   const event: Event = eventData.data;
@@ -125,10 +141,10 @@ const EventDetails: React.FC = () => {
       </Flex>
 
       <Flex flexDirection={"column"} width={{ base: "80%", lg: "40%" }} height={"auto"} boxShadow={"lg"} rounded={"lg"} mt={8} p={4}>
-        <Text fontWeight={600} color={"primary.sub"} align={"center"} mb={4} fontSize={isLargerScreen ? "2xl" : "md"}>
+        <Text fontWeight={600} color={"primary.sub"} align={"center"} mb={5} fontSize={isLargerScreen ? "2xl" : "md"}>
           Register for Event
         </Text>
-        <Select placeholder="Are you a member?" value={isMember} onChange={(e) => setIsMember(e.target.value)} mb={3}>
+        <Select placeholder="Are you a member?" value={isMember} onChange={(e) => setIsMember(e.target.value)} mb={4}>
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </Select>
@@ -144,15 +160,15 @@ const EventDetails: React.FC = () => {
               placeholder="Full Name"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              mb={3}
+              mb={4}
             />
             <Input 
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              mb={3}
+              mb={4}
             />
-            <Button type="submit" px="8" colorScheme="blue" variant="outline" size='md' width={"30%"} isLoading={mutation.isLoading}>
+            <Button type="submit" px="8" mt={5} colorScheme="blue" variant="outline" size='md' width={"30%"} isLoading={mutation.isLoading}>
               Register
             </Button>
           </form>
