@@ -141,10 +141,10 @@ const EventDetails: React.FC = () => {
       </Flex>
 
       <Flex flexDirection={"column"} width={{ base: "80%", lg: "40%" }} height={"auto"} boxShadow={"lg"} rounded={"lg"} mt={8} p={4}>
-        <Text fontWeight={600} color={"primary.sub"} align={"center"} mb={4} fontSize={isLargerScreen ? "2xl" : "md"}>
+        <Text fontWeight={600} color={"primary.sub"} align={"center"} mb={5} fontSize={isLargerScreen ? "2xl" : "md"}>
           Register for Event
         </Text>
-        <Select placeholder="Are you a member?" value={isMember} onChange={(e) => setIsMember(e.target.value)} mb={3}>
+        <Select placeholder="Are you a member?" value={isMember} onChange={(e) => setIsMember(e.target.value)} mb={4}>
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </Select>
@@ -160,15 +160,15 @@ const EventDetails: React.FC = () => {
               placeholder="Full Name"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              mb={3}
+              mb={4}
             />
             <Input 
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              mb={3}
+              mb={4}
             />
-            <Button type="submit" px="8" colorScheme="blue" variant="outline" size='md' width={"30%"} isLoading={mutation.isLoading}>
+            <Button type="submit" px="8" mt={5} colorScheme="blue" variant="outline" size='md' width={"30%"} isLoading={mutation.isLoading}>
               Register
             </Button>
           </form>
