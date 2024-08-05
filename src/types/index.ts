@@ -52,12 +52,33 @@ export interface Publication {
     // id: string;
     image: string;
   }
-  
-  export interface GalleryData {
-    name: string;
-    date_taken: string;
-    images: GalleryImage[];
-  }
+
+export interface GalleryFolder {
+  id: number;
+  images: GalleryImage[];
+  name: string;
+  date_taken: string;
+  chapters: null | string;
+}
+
+export interface PaginationLink {
+  url: string | null;
+  label: number;
+  active: boolean;
+}
+
+export interface GalleryData {
+  links: PaginationLink[];
+  current_page: number;
+  data: GalleryFolder[];
+  last_page_url: string;
+  first_page_url: string;
+  pages_number: number;
+  name: string;
+  date_taken: string;
+  images: GalleryImage[];
+}
+
   
 //  ---------------------------------------- Event ------------------------
   export interface Event {
@@ -118,18 +139,33 @@ export type ApiError = {
 
 export interface Event {
   id: string;
-  name: string;
   image: string;
-  address: string;
+  name: string;
+  is_paid_event: boolean;
+  re_occuring: boolean;
+  is_virtual: boolean;
+  is_for_excos: boolean;
+  commitee_id: number | null;
+  exco_id: number | null;
+  amount: string;
+  is_active: boolean;
   startDate: string;
   startTime: string;
-  amount: string;
-  is_paid_event: boolean;
-  is_virtual: boolean;
-  is_active: boolean;
-  organiser_name: string;
+  scheduletype: string;
+  schedule: string[];
+  event_access: {
+    link: string;
+    has_paid: boolean;
+  };
+  public: string; // Add this line
   organiser_extra_info: string;
+  organiser_name: string;
+  event_extra_details: string;
+  event_docs: string | null;
+  organiserImage: string | null;
+  is_special: boolean;
 }
+
 
 export interface ApiResponse {
   data: Event;

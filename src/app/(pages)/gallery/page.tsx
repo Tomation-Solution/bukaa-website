@@ -1,13 +1,30 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
-import { Text, Flex, Box, Image, Spinner } from '@chakra-ui/react';
+import { Text, Flex, Box, Image, Spinner, Button } from '@chakra-ui/react';
 import Link from 'next/link';
 import { fetchGalleryData } from '@/utils/fetchGalleryData';
-import { GalleryFolder } from '@/types';
+import { GalleryFolder, GalleryData } from '@/types';
 
 const GalleryPage: React.FC = () => {
-  const { data: galleryData, error, isLoading } = useQuery<GalleryFolder[], Error>('galleryData', fetchGalleryData);
+  const [page, setPage] = useState(1);
+  const { data: galleryData, error, isLoading } = useQuery<GalleryData, Error>(['galleryData', page], () => fetchGalleryData(page));
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
+
+  const handlePrevious = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (page < (galleryData?.pages_number || 1)) {
+      setPage(page + 1);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -16,7 +33,7 @@ const GalleryPage: React.FC = () => {
       </Flex>
     );
   }
-  
+
   if (error) return <Text>Error: {error.message}</Text>;
 
   return (
@@ -40,10 +57,10 @@ const GalleryPage: React.FC = () => {
       </Flex>
 
       <Flex justifyContent={'center'} textAlign={'center'} align={'center'} w={{ base: '80%', lg: '100%' }} flexWrap={'wrap'} gap={'50px'}>
-        {galleryData?.map((folder) => (
+        {galleryData?.data?.map((folder: GalleryFolder) => (
           <Flex key={folder.id} flexDirection="column" width={{ base: '100%', lg: '25%' }} height={'100%'} boxShadow={'lg'} rounded={'lg'}>
             <Link href={`/gallery/${folder.id}`}>
-              <Box height={'60%'}>
+              <Box height={{ base: "auto", sm: "auto", md: "280px" }}>
                 <Image src={folder.images[0]?.image || '/default-image.jpeg'} roundedTop={'lg'} height={'100%'} width={'100%'} alt={folder.name} />
               </Box>
               <Flex flexDirection={'column'} gap={2} align={'center'} p={4} height={'40%'}>
@@ -57,6 +74,15 @@ const GalleryPage: React.FC = () => {
             </Link>
           </Flex>
         ))}
+      </Flex>
+
+      <Flex justifyContent={'center'} gap={4}>
+        <Button onClick={handlePrevious} disabled={page === 1} colorScheme="blue" variant="outline" size='lg'>
+          Previous
+        </Button>
+        <Button onClick={handleNext} disabled={page === galleryData?.pages_number} colorScheme="blue" variant="outline" size='lg'>
+          Next
+        </Button>
       </Flex>
     </Flex>
   );
