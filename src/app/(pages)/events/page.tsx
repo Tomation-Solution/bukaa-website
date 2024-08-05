@@ -27,8 +27,8 @@ const EventsComponent: React.FC = () => {
 
   if (error) return <Text>Error loading events</Text>;
 
-  // Filter events to exclude those with "public": "yes"
-  const filteredEvents = data?.filter(event => event.public !== "yes");
+  // Filter events to exclude those with "public": "no"
+  const filteredEvents = data?.filter(event => event.public !== "no");
 
   return (
     <>
