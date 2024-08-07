@@ -8,6 +8,7 @@ import { registerForEvent } from '@/utils/RegisterForEvent';
 import { Event, ApiResponse, ApiError } from '@/types';
 import { FaMapMarkerAlt, FaCalendarAlt, FaClock, FaDollarSign } from 'react-icons/fa';
 import { MdOutlineEventAvailable, MdOutlineEventBusy } from 'react-icons/md';
+import { FaNairaSign } from "react-icons/fa6";
 
 const EventDetails: React.FC = () => {
   const { id } = useParams() as { id: string };
@@ -40,6 +41,9 @@ const EventDetails: React.FC = () => {
         isClosable: true,
         position: 'top-right',
       });
+      setFullName('');
+      setEmail('');
+      setIsMember('');
     },
     onError: (error: ApiError) => {
       let errorMessage = 'Registration failed';
@@ -105,11 +109,11 @@ const EventDetails: React.FC = () => {
         </Flex>
       </Box>
 
-      <Flex flexDirection={isLargerScreen ? "row" : "column"} width={{ base: "80%", md: "70%", lg: "70%" }} height={"auto"} boxShadow={"lg"} rounded={"lg"}>
+      <Flex flexDirection={isLargerScreen ? "row" : "column"} width={{ base: "80%", md: "70%", lg: "70%" }} height={{ base: "auto", sm: "auto", md: "380px" }} boxShadow={"lg"} rounded={"lg"} gap={{ base: 0, md: 3, sm: 0 }}>
         <Box height={"auto"} width={isLargerScreen ? "50%" : "100%"}>
           <Image src={event.image || '/default-image.jpg'} roundedTop={"lg"} width={"100%"} height={"100%"} alt={event.name} />
         </Box>
-        <Flex flexDirection={"column"} gap={2} align={"start"} p={4} height={"auto"}>
+        <Flex flexDirection={"column"} display={"flex"} justifyContent={"space-between"} gap={2} align={"start"} p={4} height={"auto"}>
           <Text fontWeight={600} color={"primary.sub"} align={"center"} fontSize={isLargerScreen ? "2xl" : "md"}>
             {event.name}
           </Text>
@@ -126,7 +130,7 @@ const EventDetails: React.FC = () => {
             <FaClock />{event.startTime}
           </Text>
           <Text fontWeight={400} color={"primary.main"} align={"start"} display="flex" alignItems="center" gap={2}>
-            <FaDollarSign /> Amount: {event.is_paid_event ? `${formatAmount(parseFloat(event.amount))} (Paid)` : 'Free'}
+            <FaNairaSign /> Amount: {event.is_paid_event ? `${formatAmount(parseFloat(event.amount))} (Paid)` : 'Free'}
           </Text>
           <Text fontWeight={400} color={"primary.main"} align={"start"} display="flex" alignItems="center" gap={2}>
             Virtual Event: {event.is_virtual ? 'Yes' : 'No'}
@@ -150,7 +154,7 @@ const EventDetails: React.FC = () => {
         </Select>
         {isMember && (isMember === 'yes' ? (
           <a href={loginUrl}>
-            <Button colorScheme="blue" variant="outline" size='md' width={"30%"}>
+            <Button colorScheme="blue" mt={5} variant="outline" size='md' width={"30%"}>
               Login
             </Button>
           </a>

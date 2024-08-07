@@ -27,6 +27,9 @@ const EventsComponent: React.FC = () => {
 
   if (error) return <Text>Error loading events</Text>;
 
+  // Filter events to exclude those with "public": "no"
+  const filteredEvents = data?.filter(event => event.public !== "no");
+
   return (
     <>
       <Flex
@@ -77,12 +80,12 @@ const EventsComponent: React.FC = () => {
           w={{ base: "80%", lg: "50%" }}
         >
           <Text color={"primary.main"}>
-          Education is the most powerful weapon which you can use to change the world. – Nelson Mandela
+            Education is the most powerful weapon which you can use to change the world. – Nelson Mandela
           </Text>
         </Flex>
 
         <Flex justifyContent={"center"} textAlign={"center"} align={"center"} w={{ base: "80%", lg: "100%" }} flexWrap={"wrap"} gap={"50px"}>
-          {data?.map((event) => (
+          {filteredEvents?.map((event) => (
             <Flex
               key={event.id}
               flexDirection="column"
@@ -96,7 +99,6 @@ const EventsComponent: React.FC = () => {
                   <Image
                     src={event.image || '/default-image.png'}
                     roundedTop={"lg"}
-                    // height={"250px"}
                     height={isLargerScreen ? "250px" : "200px"}
                     width={"100%"}
                     alt={event.name}
