@@ -1,4 +1,4 @@
-import { NEXT_PUBLIC_TENANT_NAME, NEXT_PUBLIC_BASE_URL} from "@/config";
+import { NEXT_PUBLIC_TENANT_NAME, NEXT_PUBLIC_BASE_URL} from "@/config/config";
 import { GalleryData } from '../types';
 
 export const fetchGalleryById = async (id: string): Promise<GalleryData> => {

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { CloseSquare, HambergerMenu } from "iconsax-react";
 import { useState, useEffect, useRef, MutableRefObject } from "react";
 import { useRouter } from "next/navigation";
-import { NEXT_PUBLIC_MEMBER_LOGIN_URL } from "@/config";
+import { NEXT_PUBLIC_MEMBER_LOGIN_URL } from "@/config/config";
 
 const MemberLogin = () => {
   const loginUrl =NEXT_PUBLIC_MEMBER_LOGIN_URL;

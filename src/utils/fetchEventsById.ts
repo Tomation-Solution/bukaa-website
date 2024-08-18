@@ -1,5 +1,5 @@
 // utils/fetchEventById.ts
-import { NEXT_PUBLIC_TENANT_NAME, NEXT_PUBLIC_BASE_URL} from "@/config";
+import { NEXT_PUBLIC_TENANT_NAME, NEXT_PUBLIC_BASE_URL} from "@/config/config";
 import { ApiResponse } from '../types';
 
 export const fetchEventById = async (id: string): Promise<ApiResponse> => {

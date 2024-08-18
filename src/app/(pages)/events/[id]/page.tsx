@@ -9,7 +9,7 @@ import { Event, ApiResponse, ApiError } from '@/types';
 import { FaMapMarkerAlt, FaCalendarAlt, FaClock, FaDollarSign } from 'react-icons/fa';
 import { MdOutlineEventAvailable, MdOutlineEventBusy } from 'react-icons/md';
 import { FaNairaSign } from "react-icons/fa6";
-import { NEXT_PUBLIC_MEMBER_LOGIN_URL } from "@/config";
+import { NEXT_PUBLIC_MEMBER_LOGIN_URL } from "@/config/config";
 
 const EventDetails: React.FC = () => {
   const { id } = useParams() as { id: string };

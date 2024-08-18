@@ -1,4 +1,4 @@
-import { NEXT_PUBLIC_TENANT_NAME, NEXT_PUBLIC_BASE_URL} from "@/config";
+import { NEXT_PUBLIC_TENANT_NAME, NEXT_PUBLIC_BASE_URL} from "@/config/config";
 import { NewsItems } from '../types';
 
 export const fetchNews = async (): Promise<NewsItems[]> => {
