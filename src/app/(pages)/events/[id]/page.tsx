@@ -9,6 +9,7 @@ import { Event, ApiResponse, ApiError } from '@/types';
 import { FaMapMarkerAlt, FaCalendarAlt, FaClock, FaDollarSign } from 'react-icons/fa';
 import { MdOutlineEventAvailable, MdOutlineEventBusy } from 'react-icons/md';
 import { FaNairaSign } from "react-icons/fa6";
+import { NEXT_PUBLIC_MEMBER_LOGIN_URL } from "@/config";
 
 const EventDetails: React.FC = () => {
   const { id } = useParams() as { id: string };
@@ -18,7 +19,7 @@ const EventDetails: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isMember, setIsMember] = useState('');
   const [isLargerScreen] = useMediaQuery("(min-width: 768px)");
-  const loginUrl = process.env.NEXT_PUBLIC_MEMBER_LOGIN_URL;
+  const loginUrl = NEXT_PUBLIC_MEMBER_LOGIN_URL;
 
   useEffect(() => {
     if (isMember === 'yes') {
