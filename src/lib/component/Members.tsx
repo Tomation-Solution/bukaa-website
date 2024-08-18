@@ -2,10 +2,11 @@ import { Box, Text, Flex, Image } from "@chakra-ui/react";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { SiAppstore } from "react-icons/si";
 import { useToast } from '@chakra-ui/react';
+import { NEXT_PUBLIC_MEMBER_LOGIN_URL } from "@/config";
 
 const Members = () => {
   const toast = useToast();
-  const loginUrl = process.env.NEXT_PUBLIC_MEMBER_LOGIN_URL;
+  const loginUrl = NEXT_PUBLIC_MEMBER_LOGIN_URL;
 
   const handleClick = () => {
     toast({

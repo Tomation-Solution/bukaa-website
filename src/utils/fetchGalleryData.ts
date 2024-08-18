@@ -1,8 +1,9 @@
+import { NEXT_PUBLIC_TENANT_NAME, NEXT_PUBLIC_BASE_URL} from "@/config";
 import { GalleryData } from '../types';
 
 export const fetchGalleryData = async (page: number = 1): Promise<GalleryData> => {
-  const tenantName = process.env.NEXT_PUBLIC_TENANT_NAME;
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  const tenantName = NEXT_PUBLIC_TENANT_NAME;
+  const baseUrl = NEXT_PUBLIC_BASE_URL;
 
   const response = await fetch(`${baseUrl}/tenant/${tenantName}/tenant/extras/gallery_version2/get_unauthorized_images/?page=${page}`);
   if (!response.ok) {
