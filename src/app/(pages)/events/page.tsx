@@ -85,49 +85,55 @@ const EventsComponent: React.FC = () => {
         </Flex>
 
         <Flex justifyContent={"center"} textAlign={"center"} align={"center"} w={{ base: "80%", lg: "100%" }} flexWrap={"wrap"} gap={"50px"}>
-          {filteredEvents?.map((event) => (
-            <Flex
-              key={event.id}
-              flexDirection="column"
-              width={{ base: "100%", lg: "25%" }}
-              height={"100%"}
-              boxShadow={"lg"}
-              rounded={"lg"}
-            >
-              <Link href={`/events/${event.id}`}>
-                <Box height={"60%"}>
-                  <Image
-                    src={event.image || '/default-image.png'}
-                    roundedTop={"lg"}
-                    height={isLargerScreen ? "250px" : "200px"}
-                    width={"100%"}
-                    alt={event.name}
-                  />
-                </Box>
-                <Flex flexDirection={"column"} gap={2} align={"center"} p={4} height={"0%"}>
-                  <Text fontWeight={600} fontSize={"20px"} color={"primary.sub"} align={"center"}>
-                    {event.name}
-                  </Text>
-                  <Flex flexDirection={"column"} gap={2} align={"start"} w={"100%"}>
-                    <Text fontWeight={400} color={"primary.main"} align={"start"}>
-                      Start Date: {new Date(event.startDate).toLocaleDateString()}
+          {filteredEvents && filteredEvents.length > 0 ? (
+            filteredEvents.map((event) => (
+              <Flex
+                key={event.id}
+                flexDirection="column"
+                width={{ base: "100%", lg: "25%" }}
+                height={"100%"}
+                boxShadow={"lg"}
+                rounded={"lg"}
+              >
+                <Link href={`/events/${event.id}`}>
+                  <Box height={"60%"}>
+                    <Image
+                      src={event.image || '/default-image.png'}
+                      roundedTop={"lg"}
+                      height={isLargerScreen ? "250px" : "200px"}
+                      width={"100%"}
+                      alt={event.name}
+                    />
+                  </Box>
+                  <Flex flexDirection={"column"} gap={2} align={"center"} p={4} height={"0%"}>
+                    <Text fontWeight={600} fontSize={"20px"} color={"primary.sub"} align={"center"}>
+                      {event.name}
                     </Text>
-                    <Text fontWeight={400} color={"primary.main"} align={"start"}>
-                      Amount: {formatAmount(event.amount)}
-                    </Text>
-                    <Text fontWeight={400} color={"primary.main"} align={"start"}>
-                      Virtual Event: {event.is_virtual ? 'Yes' : 'No'}
-                    </Text>
-                    <Box display="flex" justifyContent="flex-end" width="100%">
-                      <Button colorScheme="blue" variant="outline" size='sm'>
-                        Register
-                      </Button>
-                    </Box>
+                    <Flex flexDirection={"column"} gap={2} align={"start"} w={"100%"}>
+                      <Text fontWeight={400} color={"primary.main"} align={"start"}>
+                        Start Date: {new Date(event.startDate).toLocaleDateString()}
+                      </Text>
+                      <Text fontWeight={400} color={"primary.main"} align={"start"}>
+                        Amount: {formatAmount(event.amount)}
+                      </Text>
+                      <Text fontWeight={400} color={"primary.main"} align={"start"}>
+                        Virtual Event: {event.is_virtual ? 'Yes' : 'No'}
+                      </Text>
+                      <Box display="flex" justifyContent="flex-end" width="100%">
+                        <Button colorScheme="blue" variant="outline" size='sm'>
+                          Register
+                        </Button>
+                      </Box>
+                    </Flex>
                   </Flex>
-                </Flex>
-              </Link>
-            </Flex>
-          ))}
+                </Link>
+              </Flex>
+            ))
+          ) : (
+            <Text fontSize="20px" color="gray.500">
+              No events available, enjoy the silence.
+            </Text>
+          )}
         </Flex>
       </Flex>
     </>
