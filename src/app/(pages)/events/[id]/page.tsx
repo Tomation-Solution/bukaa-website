@@ -9,6 +9,7 @@ import { Event, ApiResponse, ApiError } from '@/types';
 import { FaMapMarkerAlt, FaCalendarAlt, FaClock, FaDollarSign } from 'react-icons/fa';
 import { MdOutlineEventAvailable, MdOutlineEventBusy } from 'react-icons/md';
 import { FaNairaSign } from "react-icons/fa6";
+import { initiatePayment } from '@/utils/eventsPayment';
 import { NEXT_PUBLIC_MEMBER_LOGIN_URL } from "@/config/config";
 
 const EventDetails: React.FC = () => {
@@ -70,13 +71,43 @@ const EventDetails: React.FC = () => {
     },
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     const formData = new FormData();
     formData.append('event_id', id);
     formData.append('full_name', fullName);
     formData.append('email', email);
-    mutation.mutate(formData);
+
+    if (eventData?.data?.is_paid_event) {
+      try {
+        const paymentResponse = await initiatePayment({
+          amount: eventData.data.amount,
+          email: email,
+          fullname: fullName,
+          event_id: id,
+          callback_url: `${window.location.origin}/paymentcallback?event_id=${id}&amount=${eventData.data.amount}&email=${email}&fullname=${fullName}`,
+        });
+        console.log(paymentResponse);
+
+        if (paymentResponse.success) {
+          // Redirect to Paystack checkout
+          window.location.href = paymentResponse.data.data.authorization_url;
+        }
+      } catch (error: any) {
+        toast({
+          title: 'Payment failed',
+          description: error.message,
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+          position: 'top-right',
+        });
+      }
+    } else {
+      // If the event is free, register directly
+      mutation.mutate(formData);
+    }
   };
 
   if (isLoading) {
