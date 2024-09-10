@@ -65,7 +65,7 @@ export function Footer() {
             whiteSpace={"nowrap"}
           >
             <LinkIcon color="#252525" />
-            <Text as="a" href="https://forms.gle/9yfsPMNJeCF7Nag46" target="_blank" rel="noopener noreferrer" fontSize={"1rem"} color={"primary.main"}>
+            <Text as="a" href="https://forms.gle/XDZVtGvaA7X3PaZ8A" target="_blank" rel="noopener noreferrer" fontSize={"1rem"} color={"primary.main"}>
               Register Membership Data
             </Text>
           </Flex>
